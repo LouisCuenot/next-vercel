@@ -1,7 +1,11 @@
 'use client'
 
+import { Canvas } from '@react-three/fiber';
 import Link from 'next/link';
 import React, { useState } from 'react'
+import './medal-editor.css'
+import Scene from './Scene/Scene';
+
 
 type FormValues = {
     senderName: string;
@@ -65,9 +69,9 @@ const MedalEditor = () => {
         });
     };
 
+    /*
 
-    return (
-        <>
+<>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="senderName">Sender Name:</label>
@@ -111,6 +115,18 @@ const MedalEditor = () => {
                 <Link href={`/medal/${finalId}`}>Go grab your medal !</Link>
             }
         </>
+
+    */
+
+
+    return (
+        <div
+            className='medalEditor'
+        >
+            <Canvas shadows>
+                <Scene/>
+            </Canvas>
+        </div>
     )
 }
 

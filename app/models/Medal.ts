@@ -26,6 +26,6 @@ const medalSchema:Schema<MedalType> = new Schema<MedalType>({
     }
 })
 
-const Medal = mongoose.model<MedalType>('Medal',medalSchema)
+const Medal = mongoose.models.Medal || mongoose.model<MedalType>('Medal',medalSchema)
 
 export default Medal

@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
 
-    console.log('///////////////////////////////////////////FZEcdsrezDSVCrezsvd<rezqDSVERZGvqsd',id)
+
 
 
     if (!id) {
