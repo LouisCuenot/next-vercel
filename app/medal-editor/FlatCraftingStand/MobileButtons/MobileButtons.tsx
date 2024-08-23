@@ -2,10 +2,11 @@ import React, { useRef, PointerEvent, useEffect, useState } from 'react'
 import './MobileButtons.scss'
 import FlatButton from '../FlatButton/FlatButton'
 import { useMedalContext } from '../../context/MedalEditorContext'
+import { MedalType } from '@/app/types/Medal'
 
 const MobileButtons = () => {
 
-    const {isDarkMode} = useMedalContext()
+    const {isDarkMode, currentMedal,currentDescription,currentTitle} = useMedalContext()
 
     const [isDraggable, setIsDraggable] = useState<boolean>(false)
 
@@ -51,6 +52,47 @@ const MobileButtons = () => {
         return ()=> window.removeEventListener('resize',handleResize)
     },[])
 
+    const handleSubmit = async (e:MouseEvent) => {
+        e.preventDefault()
+        if(!currentMedal) return
+
+        const data:{
+            medal:MedalType
+        } = {
+            medal:{
+                metal:currentMedal.metal,
+                collier:currentMedal.collier,
+                contours:currentMedal.contours,
+                icon:currentMedal.icon,
+                content:{
+                    title:currentTitle,
+                    mission:currentDescription,
+                    date:Date.now().toString()
+                }
+            }
+        }
+
+        try {
+            const response = await fetch('/api/create-medal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to submit form')
+            }
+
+            const result = await response.json()
+            console.log(result.id)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
 
     return (
         <div
@@ -93,9 +135,7 @@ const MobileButtons = () => {
                 />
                 <div 
                     className={`flatButton ${isDarkMode ? 'dark' : 'light'}`}
-                    onClick={()=>{
-                        
-                    }}
+                    onClick={handleSubmit}
                 >
                     Terminer
                 </div>

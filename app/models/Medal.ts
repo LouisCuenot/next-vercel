@@ -1,31 +1,20 @@
 import mongoose, { Document, Schema } from "mongoose";
+import { MedalType } from "../types/Medal";
 
-export interface MedalType extends Document {
+export interface MedalDataType extends Document {
     medalID:string
-    sender:string
-    receiver:string
-    content:string
+    medal:MedalType
 }
 
-const medalSchema:Schema<MedalType> = new Schema<MedalType>({
+const medalSchema:Schema<MedalDataType> = new Schema<MedalDataType>({
     medalID:{
-        type:String,
         required:true
     },
-    sender:{
-        type:String,
-        required:true
-    },
-    receiver:{
-        type:String,
-        required:true
-    },
-    content:{
-        type:String,
+    medal:{
         required:true
     }
 })
 
-const Medal = mongoose.models.Medal || mongoose.model<MedalType>('Medal',medalSchema)
+const Medal = mongoose.models.Medal || mongoose.model<MedalDataType>('Medal',medalSchema)
 
 export default Medal
