@@ -116,7 +116,7 @@ const Medaille = () => {
         '/glb/icons/MENAGE.glb',
         '/glb/icons/CHRONO.glb',
         '/glb/icons/TOILETTE.glb',
-        '/glb/icons/Course.glb',
+        '/glb/icons/COURSE.glb',
     ]) as unknown as [
             ClouResult,
             LaurierResult,
@@ -356,7 +356,8 @@ useGLTF.preload([
     '/glb/icons/CUISINE.glb',
     '/glb/icons/MENAGE.glb',
     '/glb/icons/CHRONO.glb',
-    '/glb/icons/TOILETTE.glb'
+    '/glb/icons/TOILETTE.glb',
+    '/glb/icons/COURSE.glb'
 ])
 
 export default Medaille
