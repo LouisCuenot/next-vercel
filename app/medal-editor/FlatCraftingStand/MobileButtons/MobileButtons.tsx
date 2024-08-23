@@ -52,8 +52,8 @@ const MobileButtons = () => {
         return ()=> window.removeEventListener('resize',handleResize)
     },[])
 
-    const handleSubmit = async (e:MouseEvent) => {
-        e.preventDefault()
+    const handleSubmit = async () => {
+        
         if(!currentMedal) return
 
         const data:{

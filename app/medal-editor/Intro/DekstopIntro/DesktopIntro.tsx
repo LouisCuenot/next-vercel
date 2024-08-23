@@ -3,6 +3,7 @@ import './DesktopIntro.scss'
 import { useMedalContext } from '../../context/MedalEditorContext'
 import DesktopInputs from './DesktopInputs/DesktopInputs'
 import gsap from 'gsap'
+import Image from 'next/image'
 
 const DesktopIntro = () => {
 
@@ -66,7 +67,7 @@ const DesktopIntro = () => {
     <div
       className={`desktopIntro ${isDarkMode ? 'dark' : 'light'}`}
     >
-      <img className='logoDesktop' src="/logo.svg" alt="Le logo de Tu veux une médaille ?" />
+      <Image width={200} height={200} className='logoDesktop' src="/logo.svg" alt="Le logo de Tu veux une médaille ?" />
       <h1
         className={isDarkMode ? 'dark' : 'light'}
       >
@@ -86,7 +87,7 @@ const DesktopIntro = () => {
             transform:'translateY(100%)'
           }}
         >
-          <img src="/icons/lauriers3rd.svg" alt="An icon" />
+          <Image width={200} height={200} src="/icons/lauriers3rd.svg" alt="An icon" />
         </div>
         <div 
           className={`secondP pod ${isDarkMode ? 'dark' : 'light'}`}
@@ -95,7 +96,7 @@ const DesktopIntro = () => {
             transform:'translateY(100%)'
           }}
         >
-          <img src="/icons/lauriers2nd.svg" alt="An icon" />
+          <Image width={200} height={200} src="/icons/lauriers2nd.svg" alt="An icon" />
         </div>
         <div 
           className={`firstP pod ${isDarkMode ? 'dark' : 'light'}`}
@@ -104,7 +105,7 @@ const DesktopIntro = () => {
             transform:'translateY(100%)'
           }}
         >
-          <img src="/icons/lauriers1st.svg" alt="An icon" />
+          <Image width={200} height={200} src="/icons/lauriers1st.svg" alt="An icon" />
         </div>
       </div>
       <div 

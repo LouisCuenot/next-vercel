@@ -4,6 +4,7 @@ import { useMedalContext } from '../../context/MedalEditorContext'
 import IntroInput from './IntroInput/IntroInput'
 import IntroButton from './IntroButton/IntroButton'
 import gsap from 'gsap'
+import Image from 'next/image'
 
 
 const MobileIntro = () => {
@@ -103,7 +104,7 @@ const MobileIntro = () => {
         }}
         ref={podiumRef}
       >
-        <img src="/logo.svg" alt="Le logo de Tu Veux une Médaille ?" />
+        <Image src="/logo.svg" alt="Le logo de Tu Veux une Médaille ?" width={300} height={300} />
       </div>
     </div>
   )

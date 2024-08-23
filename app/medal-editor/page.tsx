@@ -11,6 +11,7 @@ import { Perf } from 'r3f-perf';
 import FlatCraftingStand from './FlatCraftingStand/FlatCraftingStand';
 import Intro from './Intro/Intro';
 import DarkModeButtons from './DarkModeButtons/DarkModeButtons';
+import Image from 'next/image';
 
 
 type FormValues = {
@@ -185,7 +186,7 @@ const MedalEditor = () => {
                 }
                 {
                     !isMobile &&
-                    <img src='/logo.svg' className='logo'/>
+                    <Image width={200} height={200} src='/logo.svg' className='logo' alt="Le logo"/>
                 }
                 <DarkModeButtons/>
                 <div
