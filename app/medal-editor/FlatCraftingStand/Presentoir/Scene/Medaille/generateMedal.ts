@@ -37,7 +37,7 @@ const createContours = (
     let contours:THREE.BufferGeometry|null = null
 
 
-    const useModelContour = (model:THREE.BufferGeometry,scale:number) => {
+    const getModelContour = (model:THREE.BufferGeometry,scale:number) => {
         const modelContour = model.clone()
         modelContour.scale(scale,scale,scale)
         modelContour.translate(
@@ -50,19 +50,19 @@ const createContours = (
     
     switch(type){
         case 'points' :  
-            contours = useModelContour(models.clou,2.25);
+            contours = getModelContour(models.clou,2.25);
             break
         case 'lauriers' :
-            contours = useModelContour(models.laurier,1.4)
+            contours = getModelContour(models.laurier,1.4)
             break
         case 'tripleLines' :
-            contours = useModelContour(models.tripleLines,0.95)
+            contours = getModelContour(models.tripleLines,0.95)
             break
         case 'verticalLines' :
-            contours = useModelContour(models.innerLines,2.375)
+            contours = getModelContour(models.innerLines,2.375)
             break
         case 'stars' :
-            contours = useModelContour(models.stars,2.25)
+            contours = getModelContour(models.stars,2.25)
             break
     }
 
