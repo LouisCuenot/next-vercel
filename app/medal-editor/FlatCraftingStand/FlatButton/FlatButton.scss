@@ -1,0 +1,33 @@
+.flatButton {
+    width: 150px;
+    height: 44px;
+    border-radius: 22px;
+    margin: 0 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 18px;
+    user-select: none;
+    cursor: pointer;
+
+    &.light {
+        -webkit-box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+        box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+        color: #8C8C8C;
+        &.digged {
+            -webkit-box-shadow: inset 2px -2px 2px 0px #FFFFFF, inset -2px 5px 7px 5px #AAAAAA;
+            box-shadow: inset 2px -2px 2px 0px #FFFFFF, inset -2px 5px 7px 5px #AAAAAA;
+        }
+    }
+
+    &.dark {
+        -webkit-box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+        box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+        color: #FFFFFF;
+        &.digged {
+            -webkit-box-shadow: inset -3px 5px 8px 5px #000000, inset 3px -3px 3px 0px rgba(255, 255, 255, 0.06);
+            box-shadow: inset -3px 5px 8px 5px #000000, inset 3px -3px 3px 0px rgba(255, 255, 255, 0.06);
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.iBorder {
+    width: 42px;
+    height: 42px;
+    border-radius: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease-in;
+    border: 1px solid rgba(255,255,255,0);
+    svg{
+        width: 60%;
+    }
+    &:hover{
+        border: 1px solid rgba(255,255,255,1);
+    }
+    &:not(:last-of-type){
+        margin-right: 27px;
+    }
+    &.active{
+        border: 1px solid rgba(255,255,255,1);
+    }
+    svg{
+        height: 24px;
+    }
+
+}

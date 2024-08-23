@@ -1,0 +1,46 @@
+.introInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+    height: fit-content;
+    border-bottom: 2px solid;
+    margin-bottom: 32px;
+    &.dark{
+        border-color: #FFFFFF;
+    }
+    &.light{
+        border-color: #8C8C8C;
+    }
+    h2{
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 32px;
+        margin-bottom: 16px;
+        &.dark{
+            color: #FFFFFF;
+        }
+        &.light{
+            color: #8C8C8C;
+        }
+    }
+    input{
+        font-size: 32px;
+        line-height: 32px;
+        font-weight: 600;
+        opacity: 0.5;
+        background: none;
+        border: none;
+        margin-bottom: 12px;
+        &:focus{
+            outline: none;
+        }
+        &.dark{
+            color: #FFFFFF;
+        }
+        &.light{
+            color: #8C8C8C;
+        }
+    }
+}

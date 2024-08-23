@@ -1,0 +1,40 @@
+.displayedParameter {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    .extrudedArea {
+        &.light {
+            -webkit-box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+            box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+        }
+
+        &.dark {
+            -webkit-box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+            box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+        }
+
+        width: 90%;
+        height: 52px;
+        border-radius: 26px;
+        display: grid;
+
+        .draggableArea {
+            width: fit-content;
+            height: 100%;
+            position: relative;
+            top: 0;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+
+            &.fxd {
+                justify-self: center;
+                left: 0 !important;
+            }
+
+        }
+    }
+}

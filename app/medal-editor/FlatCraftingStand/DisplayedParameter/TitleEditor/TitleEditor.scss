@@ -1,0 +1,26 @@
+.titleEditor {
+    width: 80vw;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        width: 90%;
+        margin-left: 5%;
+        &.dark {
+            color: #FFFFFF;
+        }
+
+        &.light {
+            color: #8C8C8C;
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
+    }
+}

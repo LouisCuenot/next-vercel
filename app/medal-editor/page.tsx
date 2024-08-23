@@ -2,9 +2,15 @@
 
 import { Canvas } from '@react-three/fiber';
 import Link from 'next/link';
-import React, { useState } from 'react'
-import './medal-editor.css'
-import Scene from './Scene/Scene';
+import React, { RefObject, useEffect, useState } from 'react'
+import './medal-editor.scss'
+import { MedalType } from '../types/Medal';
+import { ActiveParameterType, MedalEditorContext } from './context/MedalEditorContext';
+import { Group, Mesh } from 'three';
+import { Perf } from 'r3f-perf';
+import FlatCraftingStand from './FlatCraftingStand/FlatCraftingStand';
+import Intro from './Intro/Intro';
+import DarkModeButtons from './DarkModeButtons/DarkModeButtons';
 
 
 type FormValues = {
@@ -14,6 +20,35 @@ type FormValues = {
 };
 
 const MedalEditor = () => {
+
+    const [medalRef, setMedalRef] = useState<RefObject<Group>|null>(null)
+    const [currentMedal, setCurrentMedal] = useState<MedalType | null>({
+        collier:'blue',
+        content:{
+            date:'aaa',
+            mission:'dv ',
+            title:'xc'
+        },
+        contours:'lauriers',
+        icon:'sport',
+        metal:'gold'
+    })
+    const [currentDescription, setCurrentDescription] = useState('')
+    const [currentTitle, setCurrentTitle] = useState('')
+    const [activeParameter, setActiveParameter] = useState<ActiveParameterType>(null)
+    const [isDarkMode,setIsDarkMode] = useState(false)
+    const [isMobile, setIsMobile] = useState(window.innerWidth<750)
+    const [isAnimComplete,setIsAnimComplete] = useState(false)
+    const [isIntroCompleted,setIsIntroCompleted] = useState(false)
+
+    useEffect(()=>{
+        const handleResize = () => {
+            setIsMobile(window.innerWidth<750)
+        }
+
+        window.addEventListener('resize',handleResize)
+        return ()=>window.removeEventListener('resize',handleResize)
+    },[])
 
 
     const [finalId, setFinalId] = useState<null | string>(null)
@@ -123,9 +158,45 @@ const MedalEditor = () => {
         <div
             className='medalEditor'
         >
-            <Canvas shadows>
-                <Scene/>
-            </Canvas>
+            <MedalEditorContext.Provider
+                value={{
+                    medalRef,
+                    setMedalRef,
+                    activeParameter,
+                    setActiveParameter,
+                    currentMedal,
+                    setCurrentMedal,
+                    currentDescription,
+                    setCurrentDescription,
+                    currentTitle,
+                    setCurrentTitle,
+                    isDarkMode,
+                    setIsDarkMode,
+                    isMobile,
+                    isAnimComplete,
+                    setIsAnimComplete,
+                    isIntroCompleted,
+                    setIsIntroCompleted
+                }}
+            >   
+                {
+                    !isIntroCompleted &&
+                    <Intro/>
+                }
+                {
+                    !isMobile &&
+                    <img src='/logo.svg' className='logo'/>
+                }
+                <DarkModeButtons/>
+                <div
+                    className='medalEditor'
+                >
+                    {
+                        isAnimComplete &&
+                        <FlatCraftingStand/>
+                    }
+                </div>
+            </MedalEditorContext.Provider>
         </div>
     )
 }

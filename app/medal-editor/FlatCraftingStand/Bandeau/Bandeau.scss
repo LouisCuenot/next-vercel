@@ -1,0 +1,14 @@
+.bandeauContainer{
+    width: 0;
+    height: 0;
+    overflow: visible;
+    position: relative;
+    .bandeauImg,.bandeauOmbre{
+        position: absolute;
+        width: 60vw;
+        transform-origin: 12% 100% ;
+        transform: translateX(-13%) translateY(-7%) rotate(60deg);
+        bottom:0;
+        left: 0;
+    }
+}
