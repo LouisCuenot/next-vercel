@@ -6,6 +6,7 @@
     .bandeauImg,.bandeauOmbre{
         position: absolute;
         width: 60vw;
+        height: auto;
         transform-origin: 12% 100% ;
         transform: translateX(-13%) translateY(-7%) rotate(60deg);
         bottom:0;
