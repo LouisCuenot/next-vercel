@@ -38,11 +38,13 @@ const MedalEditor = () => {
     const [currentTitle, setCurrentTitle] = useState('')
     const [activeParameter, setActiveParameter] = useState<ActiveParameterType>(null)
     const [isDarkMode,setIsDarkMode] = useState(false)
-    const [isMobile, setIsMobile] = useState(window.innerWidth<750)
+    const [isMobile, setIsMobile] = useState(false)
     const [isAnimComplete,setIsAnimComplete] = useState(false)
     const [isIntroCompleted,setIsIntroCompleted] = useState(false)
 
+    
     useEffect(()=>{
+        setIsMobile(window.innerWidth<750)
         const handleResize = () => {
             setIsMobile(window.innerWidth<750)
         }
