@@ -186,9 +186,9 @@ const GeneratedMedal = () => {
     }, [medal]);
 
     useEffect(()=>{
-        if(!current3DFont || !medal?.content.title.length)return setTitleGeom(null)
-        setTitleGeom(generateTitleToExtrude(current3DFont,medal.content.title,0.65))
-    },[medal?.content.title,current3DFont])
+        if(!current3DFont || !medal!.content.title.length)return setTitleGeom(null)
+        setTitleGeom(generateTitleToExtrude(current3DFont,medal!.content.title,0.65))
+    },[medal!.content.title,current3DFont])
 
     useEffect(() => {
 
