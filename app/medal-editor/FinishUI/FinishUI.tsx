@@ -65,13 +65,13 @@ const FinishUI = () => {
                 className={`finishButton ${isDarkMode ? 'dark' : 'light'}`}
                 onClick={()=>setIsFinishUIActive(false)}
             >
-                Non, poursuivre
+                <span>Non, poursuivre</span>
             </div>
             <div 
                 className={`finishButton ${isDarkMode ? 'dark' : 'light'}`}
                 onClick={handleSubmit}
             >
-                Oui, j'envoie
+                <span>Oui, j'envoie</span>
             </div>
         </div>
         {
