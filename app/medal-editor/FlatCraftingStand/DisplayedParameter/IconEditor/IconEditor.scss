@@ -7,20 +7,35 @@
     align-items: center;
     transition: 0.2s ease-in;
     border: 1px solid rgba(255,255,255,0);
+    @media screen and (max-width:850px) {
+        width: 28px;
+        height: 28px;
+        border-radius: 14px;
+    }
+    @media screen and (max-width:600px) {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+    }
     svg{
         width: 60%;
+        height: auto;
     }
     &:hover{
         border: 1px solid rgba(255,255,255,1);
     }
     &:not(:last-of-type){
         margin-right: 27px;
+        @media screen and (max-width:850px) {
+            margin-right: 18px;
+        }
+        @media screen and (max-width:600px) {
+            margin-right: 12px;
+        }
     }
     &.active{
         border: 1px solid rgba(255,255,255,1);
     }
-    svg{
-        height: 24px;
-    }
+    
 
 }

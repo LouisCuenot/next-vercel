@@ -1,15 +1,17 @@
-
 import { Text, useGLTF, useTexture } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { BufferGeometry, Group, Mesh, NearestFilter } from 'three'
 
 import { useMedalContext } from '@/app/medal-editor/context/MedalEditorContext'
-import { generateMedal } from './generateMedal'
+
 import { Font, FontLoader, GLTF, TextGeometry } from 'three/examples/jsm/Addons.js'
 import { GeomContoursType, GeomIconsType } from '@/app/types/Medal'
 import { Addition, Base, Geometry, Subtraction } from '@react-three/csg'
-import { generateTitleToExtrude } from './generateTitleToExtrude'
+import { useMedalViewerContext } from '../../context/MedalViewerContext'
+import { generateMedal } from '@/app/medal-editor/FlatCraftingStand/Presentoir/Scene/Medaille/generateMedal'
+import { generateTitleToExtrude } from '@/app/medal-editor/FlatCraftingStand/Presentoir/Scene/Medaille/generateTitleToExtrude'
+
 
 type ClouResult = GLTF & {
     nodes: {
@@ -85,10 +87,9 @@ type CourseResult = GLTF & {
 }
 
 
-const Medaille = () => {
+const GeneratedMedal = () => {
 
-    let { setMedalRef, currentMedal, currentDescription, currentTitle } = useMedalContext()
-
+    let { medal } = useMedalViewerContext()
 
 
     const [
@@ -157,7 +158,7 @@ const Medaille = () => {
     const mRef = useRef<Group>(null)
 
     const [current3DFont, setCurrent3DFont] = useState<null | Font>()
-    const [modifiedDescription, setModifiedDescription] = useState(currentDescription)
+    const [modifiedDescription, setModifiedDescription] = useState(medal!.content.mission)
 
     useEffect(() => {
         const fLoader = new FontLoader()
@@ -171,42 +172,39 @@ const Medaille = () => {
 
     const medalGeom = useMemo(() => {
 
-        if (!currentMedal) return
+        if (!medal) return
 
 
         const newMedalGeom = generateMedal(
-            currentMedal,
+            medal,
             contoursGeom,
             iconsGeom,
         );
         
 
         return newMedalGeom;
-    }, [currentMedal]);
+    }, [medal]);
 
     useEffect(()=>{
-        if(!current3DFont || !currentTitle.length)return setTitleGeom(null)
-        setTitleGeom(generateTitleToExtrude(current3DFont,currentTitle,0.65))
-    },[currentTitle,current3DFont])
+        if(!current3DFont || !medal?.content.title.length)return setTitleGeom(null)
+        setTitleGeom(generateTitleToExtrude(current3DFont,medal.content.title,0.65))
+    },[medal?.content.title,current3DFont])
 
     useEffect(() => {
-        if (mRef) {
-            setMedalRef(mRef);
-        }
 
         return () => {
             if (medalGeom) {
                 medalGeom.dispose();
             }
         };
-    }, [setMedalRef, medalGeom]);
+    }, [ medalGeom]);
 
     useEffect(()=>{
         let presSpacePosition = 0
         let descriptionLettersArray:string[] = []
         let placeToInsertSpace:number[] = []
-        for(let i=0;i<currentDescription.length;i++){
-            descriptionLettersArray.push(currentDescription[i])
+        for(let i=0;i<medal!.content.mission.length;i++){
+            descriptionLettersArray.push(medal!.content.mission[i])
         }
         descriptionLettersArray.forEach((letter,index)=>{
             if(letter === ' '){
@@ -222,10 +220,10 @@ const Medaille = () => {
         })
         const newDesc = descriptionLettersArray.join('') 
         setModifiedDescription(newDesc)
-    },[currentDescription])
+    },[medal!.content.mission])
 
 
-    if (!currentMedal) return <></>
+    if (!medal) return <></>
 
     return (
         <group
@@ -241,11 +239,11 @@ const Medaille = () => {
                         <cylinderGeometry args={[1, 1, 0.2, 64, 8]} />
                         <meshPhysicalMaterial
                             color={
-                                currentMedal.metal === 'gold'
+                                medal.metal === 'gold'
                                     ?
                                     0xF5C22D
                                     :
-                                    currentMedal.metal === 'silver'
+                                    medal.metal === 'silver'
                                         ?
                                         0xC0C0C0
                                         :
@@ -267,11 +265,11 @@ const Medaille = () => {
                         >
                             <meshPhysicalMaterial
                             color={
-                                currentMedal.metal === 'gold'
+                                medal.metal === 'gold'
                                     ?
                                     0x493306
                                     :
-                                    currentMedal.metal === 'silver'
+                                    medal.metal === 'silver'
                                         ?
                                         0x525252
                                         :
@@ -292,11 +290,11 @@ const Medaille = () => {
                 <cylinderGeometry args={[1, 1, 0.01, 64, 8]} />
                 <meshPhysicalMaterial
                     color={
-                        currentMedal.metal === 'gold'
+                        medal.metal === 'gold'
                             ?
                             0xF5C22D
                             :
-                            currentMedal.metal === 'silver'
+                            medal.metal === 'silver'
                                 ?
                                 0xC0C0C0
                                 :
@@ -312,11 +310,11 @@ const Medaille = () => {
             >
                 <meshPhysicalMaterial
                     color={
-                        currentMedal.metal === 'gold'
+                        medal.metal === 'gold'
                             ?
                             0xF5C22D
                             :
-                            currentMedal.metal === 'silver'
+                            medal.metal === 'silver'
                                 ?
                                 0xC0C0C0
                                 :
@@ -360,4 +358,4 @@ useGLTF.preload([
     '/glb/icons/COURSE.glb'
 ])
 
-export default Medaille
+export default GeneratedMedal

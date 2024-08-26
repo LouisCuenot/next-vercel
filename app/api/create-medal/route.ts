@@ -7,7 +7,7 @@ import {v4 as uuidV4} from 'uuid'
 type CreateMedalReq = {
     medal:MedalType
 }
-
+ 
 export async function POST(request:NextRequest){
 
     await dbConnect()
@@ -15,10 +15,11 @@ export async function POST(request:NextRequest){
     try{
         const res:CreateMedalReq = await request.json()
         const { medal } = res
+        console.log(medal)
 
         const cMedal = await Medal.create({
             medalID:uuidV4(),
-            medal
+            medal:medal
         })
 
         return NextResponse.json({id:cMedal.medalID})

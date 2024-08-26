@@ -7,17 +7,26 @@
     align-items: center;
     transition: 0.2s ease-in;
     border: 1px solid rgba(255,255,255,0);
+    @media screen and (max-width:850px) {
+        width: 28px;
+        height: 28px;
+        border-radius: 14px;
+    }
     &:hover{
         border: 1px solid rgba(255,255,255,1);
     }
     &:not(:last-of-type){
         margin-right: 27px;
+        @media screen and (max-width:850px) {
+            margin-right: 18px;
+        }
     }
     &.active{
         border: 1px solid rgba(255,255,255,1);
     }
     svg{
-        height: 24px;
+        width: 60%;
+        height: auto;
     }
 
 }

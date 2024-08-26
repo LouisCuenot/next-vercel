@@ -62,6 +62,8 @@ const DesktopIntro = () => {
     setIsIntroCompleted(true)
   }
 
+  
+
 
   return (
     <div
@@ -76,6 +78,8 @@ const DesktopIntro = () => {
       <DesktopInputs
         setCurrentDesc={setCurrentDesc}
         setCurrentTit={setCurrentTit}
+        currentDesc={currentDesc}
+        currentTit={currentTit}
       />
       <div
         className="podiums"

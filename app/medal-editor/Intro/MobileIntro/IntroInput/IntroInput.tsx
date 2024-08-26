@@ -6,10 +6,11 @@ const IntroInput = (props:{
     label:string,
     placeholder:string,
     maxLength:number,
-    onChange:(e:string)=>void
+    onChange:(e:string)=>void,
+    val:string
 }) => {
 
-    const {label, placeholder,onChange, maxLength} = props
+    const {label, placeholder,onChange, maxLength,val} = props
     const {isDarkMode} = useMedalContext()
 
   return (
@@ -27,6 +28,7 @@ const IntroInput = (props:{
             className={isDarkMode ? 'dark': 'light'}
             placeholder={placeholder}
             onChange={(e)=>onChange(e.target.value)}
+            value={val}
         />
     </div>
   )

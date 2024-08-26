@@ -1,74 +1,77 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useParams} from 'next/navigation'
+import { useParams } from 'next/navigation'
+import { MedalType } from '@/app/types/Medal'
+import { MedalViewerContext } from './context/MedalViewerContext'
+import MedalViewer from './MedalViewer/MedalViewer'
+import './MedalViewerContainer.scss'
 
 
 
 const Medal = () => {
 
-    const [medal, setMedal] = useState<null|{
-        id:string,
-        sender:string|null,
-        receiver:string,
-        content:string
-    }>(null)
+    const [medal, setMedal] = useState<undefined | null | MedalType>(undefined)
 
-    const {id} = useParams<{id:string}>()
+    const { id } = useParams<{ id: string }>()
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const fetchMedal = async () => {
-            try{
+            try {
                 const response = await fetch(`/api/get-medal-by-id?id=${id}`, {
                     method: 'GET',
                     headers: {
-                      'Content-Type': 'application/json',
+                        'Content-Type': 'application/json',
                     },
-                  })
+                })
 
-                if(!response.ok){
+                if (!response.ok) {
                     throw new Error('Failed to get medal by ID')
                 }
 
                 const result = await response.json()
-                setMedal(result)
-                
-            }catch(error){
-                console.error(error)
+                setMedal(result.medal)
+
+            } catch (error) {
+                setMedal(null)
+                console.error(error, 'aaaaa')
             }
         }
 
-        if(id){
+        if (id) {
             fetchMedal()
         }
 
 
-    },[id])
+    }, [id])
 
-    
 
-  return (
-    <div>
-        {
-            medal
-            ?
-            <div
-                style={{
-                    display:'flex',
-                    flexDirection:'column',
-                }}
-            >
-                <h2>Voici votre medaille :</h2>
-                <span>Sender : {medal.sender}</span>
-                <span>Receiver : {medal.receiver}</span>
-                <p>Content : {medal.content}</p>
-            </div>
-            :
-            <span>404</span>
-        }
-    </div>
-  )
+
+    return (
+        <>
+            {
+                medal !== undefined &&
+                <MedalViewerContext.Provider
+                    value={{
+                        medal
+                    }}
+                >
+                    <div
+                        className='medalViewerContainer'
+                    >
+                        {
+                            medal
+                                ?
+                                <MedalViewer />
+                                :
+                                <span>404</span>
+                        }
+                    </div>
+                </MedalViewerContext.Provider>
+            }
+        </>
+    )
 }
 
 export default Medal

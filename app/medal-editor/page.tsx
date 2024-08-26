@@ -12,6 +12,7 @@ import FlatCraftingStand from './FlatCraftingStand/FlatCraftingStand';
 import Intro from './Intro/Intro';
 import DarkModeButtons from './DarkModeButtons/DarkModeButtons';
 import Image from 'next/image';
+import FinishUI from './FinishUI/FinishUI';
 
 
 type FormValues = {
@@ -22,36 +23,45 @@ type FormValues = {
 
 const MedalEditor = () => {
 
-    const [medalRef, setMedalRef] = useState<RefObject<Group>|null>(null)
+
+
+    const [medalRef, setMedalRef] = useState<RefObject<Group> | null>(null)
     const [currentMedal, setCurrentMedal] = useState<MedalType | null>({
-        collier:'blue',
-        content:{
-            date:'aaa',
-            mission:'dv ',
-            title:'xc'
+        collier: 'blue',
+        content: {
+            date: 'aaa',
+            mission: 'dv ',
+            title: 'xc'
         },
-        contours:'lauriers',
-        icon:'sport',
-        metal:'gold'
+        contours: 'lauriers',
+        icon: 'sport',
+        metal: 'gold'
     })
     const [currentDescription, setCurrentDescription] = useState('')
     const [currentTitle, setCurrentTitle] = useState('')
     const [activeParameter, setActiveParameter] = useState<ActiveParameterType>(null)
-    const [isDarkMode,setIsDarkMode] = useState(false)
+    const [isDarkMode, setIsDarkMode] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
-    const [isAnimComplete,setIsAnimComplete] = useState(false)
-    const [isIntroCompleted,setIsIntroCompleted] = useState(false)
+    const [isWindowDefined, setIsWindowDefined] = useState(false)
+    const [isAnimComplete, setIsAnimComplete] = useState(false)
+    const [isIntroCompleted, setIsIntroCompleted] = useState(false)
+    const [isFinishUIActive, setIsFinishUIActive] = useState(false)
+    const [medalLink, setMedalLink] = useState<string>('')
 
-    
-    useEffect(()=>{
-        setIsMobile(window.innerWidth<750)
+
+    useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth<750)
+            setIsMobile(window.innerWidth < 750)
         }
+        if (window) {
+            setIsMobile(window.innerWidth < 750)
+            setIsWindowDefined(true)
 
-        window.addEventListener('resize',handleResize)
-        return ()=>window.removeEventListener('resize',handleResize)
-    },[])
+
+            window.addEventListener('resize', handleResize)
+        }
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
 
     const [finalId, setFinalId] = useState<null | string>(null)
@@ -158,49 +168,63 @@ const MedalEditor = () => {
 
 
     return (
-        <div
-            className='medalEditor'
-        >
-            <MedalEditorContext.Provider
-                value={{
-                    medalRef,
-                    setMedalRef,
-                    activeParameter,
-                    setActiveParameter,
-                    currentMedal,
-                    setCurrentMedal,
-                    currentDescription,
-                    setCurrentDescription,
-                    currentTitle,
-                    setCurrentTitle,
-                    isDarkMode,
-                    setIsDarkMode,
-                    isMobile,
-                    isAnimComplete,
-                    setIsAnimComplete,
-                    isIntroCompleted,
-                    setIsIntroCompleted
-                }}
-            >   
-                {
-                    !isIntroCompleted &&
-                    <Intro/>
-                }
-                {
-                    !isMobile &&
-                    <Image width={200} height={200} src='/logo.svg' className='logo' alt="Le logo"/>
-                }
-                <DarkModeButtons/>
+        <>
+            {
+                isWindowDefined &&
                 <div
                     className='medalEditor'
                 >
-                    {
-                        isAnimComplete &&
-                        <FlatCraftingStand/>
-                    }
+                    <MedalEditorContext.Provider
+                        value={{
+                            medalRef,
+                            setMedalRef,
+                            activeParameter,
+                            setActiveParameter,
+                            currentMedal,
+                            setCurrentMedal,
+                            currentDescription,
+                            setCurrentDescription,
+                            currentTitle,
+                            setCurrentTitle,
+                            isDarkMode,
+                            setIsDarkMode,
+                            isMobile,
+                            isAnimComplete,
+                            setIsAnimComplete,
+                            isIntroCompleted,
+                            setIsIntroCompleted,
+                            isFinishUIActive,
+                            setIsFinishUIActive,
+                            medalLink,
+                            setMedalLink
+                        }}
+                    >
+                        {
+                            !isIntroCompleted &&
+                            <Intro />
+                        }
+                        {
+                            !isMobile &&
+                            <Image width={200} height={200} src='/logo.svg' className='logo' alt="Le logo" />
+                        }
+                        {
+                            isFinishUIActive &&
+                            <FinishUI/>
+                        }
+                        <DarkModeButtons />
+                        <div
+                            className='medalEditor'
+                        >
+                            {
+                                isAnimComplete &&
+                                <FlatCraftingStand />
+                            }
+                        </div>
+                    </MedalEditorContext.Provider>
                 </div>
-            </MedalEditorContext.Provider>
-        </div>
+            }
+        </>
+
     )
 }
 

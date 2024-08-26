@@ -35,11 +35,11 @@ const medalSchema:Schema<MedalDataType> = new Schema<MedalDataType>({
         content: {
             title: {
                 type: String,
-                required: true
+                required:false
             },
             mission: {
                 type: String,
-                required: true
+                required:false
             },
             date: {
                 type: String,

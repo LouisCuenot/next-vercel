@@ -76,7 +76,7 @@ const createIcon = (type:IconType,models:GeomIconsType) => {
     switch(type){
         case 'sport':
             icon = models.sport.clone()
-            icon.scale(7,7,7)
+            icon.scale(5,5,5)
             break
         case 'trash':
             icon = models.trash.clone()

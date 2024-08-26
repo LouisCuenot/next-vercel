@@ -21,7 +21,11 @@ export type MedalEditorContextType = {
     isAnimComplete:boolean,
     setIsAnimComplete:(iAC:boolean)=>void,
     isIntroCompleted:boolean,
-    setIsIntroCompleted:(iIC:boolean)=>void
+    setIsIntroCompleted:(iIC:boolean)=>void,
+    isFinishUIActive:boolean,
+    setIsFinishUIActive:(iFUIA:boolean)=>void,
+    medalLink:string,
+    setMedalLink:(mL:string)=>void
 }
 
 export const MedalEditorContext = createContext<MedalEditorContextType>({
@@ -41,7 +45,11 @@ export const MedalEditorContext = createContext<MedalEditorContextType>({
     isAnimComplete:false,
     setIsAnimComplete:()=>{},
     isIntroCompleted:false,
-    setIsIntroCompleted:()=>{}
+    setIsIntroCompleted:()=>{},
+    isFinishUIActive:false,
+    setIsFinishUIActive:()=>{},
+    medalLink:'',
+    setMedalLink:()=>{}
 })
 
 export const useMedalContext = () => useContext(MedalEditorContext)

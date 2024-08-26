@@ -12,47 +12,91 @@ const MobileIntro = () => {
   const opacDivRef = useRef<HTMLDivElement>(null)
   const podiumRef = useRef<HTMLDivElement>(null)
 
-  const { isDarkMode,setIsAnimComplete, setCurrentDescription, setCurrentTitle, setIsIntroCompleted } = useMedalContext()
+  const { isDarkMode, setIsAnimComplete, setCurrentDescription, setCurrentTitle, setIsIntroCompleted } = useMedalContext()
   const [currentTit, setCurrentTit] = useState('')
   const [currentDesc, setCurrentDesc] = useState('')
 
-  useEffect(()=>{
+  const titleOptions = [
+    'Elena',
+    'Matthieu',
+    'Aïcha',
+    'Lucas',
+    'Mathilde',
+    'Jamal',
+    'Emma',
+    'Omar',
+    'Maya',
+    'Thibault',
+    'Juliette',
+    'Robin',
+    'Leila',
+    'Mohammed',
+    'Inès',
+    'Thiago',
+    'Yasmine',
+    'Felipe',
+    'Chloé',
+    'Cameron'
+  ]
+
+  const descOptions = [
+    'Avoir fait la vaisselle',
+    'Avoir rangé l’appartement',
+    'Avoir fait du sport',
+    'Avoir sorti les poubelles',
+    'Être arrivé à l’heure',
+    'Avoir préparé le repas',
+    'Avoir rendu son mémoire',
+    'Être allé faire les courses',
+    'Avoir mangé sainement',
+    'Avoir baissé la cuvette',
+    'Être ponctuel',
+    'Avoir épluché les légumes',
+    'Avoir gagné le tournoi'
+  ]
+
+  const surpriseMe = () => {
+    setCurrentTit(titleOptions[Math.floor(Math.random()*(titleOptions.length-0.001))])
+    setCurrentDesc(descOptions[Math.floor(Math.random()*(descOptions.length-0.001))])
+  }
+
+  useEffect(() => {
     const animValues = {
-      podium:100
+      podium: 100
     }
     const retourValue = {
-      podium:0
+      podium: 0
     }
-    
-    gsap.to(animValues,{
-      podium:0,
-      duration:0.8,
-      onUpdate:()=>{
-        if(podiumRef.current){
-          podiumRef.current.style.setProperty('transform',`translateY(${animValues.podium}%)`)
+
+    gsap.to(animValues, {
+      podium: 0,
+      duration: 0.8,
+      onUpdate: () => {
+        if (podiumRef.current) {
+          podiumRef.current.style.setProperty('transform', `translateY(${animValues.podium}%)`)
         }
       },
-      onComplete:()=>{
-        if(opacDivRef.current){
-          opacDivRef.current.style.setProperty('opacity','1')
+      onComplete: () => {
+        if (opacDivRef.current) {
+          opacDivRef.current.style.setProperty('opacity', '1')
         }
       }
     }).play()
 
-    gsap.to(retourValue,{
-      podium:100,
-      duration:0.8,
-      delay:0.8,
-      onUpdate:()=>{
-        if(podiumRef.current){
-          podiumRef.current.style.setProperty('transform',`translateY(${retourValue.podium}%)`)
+    gsap.to(retourValue, {
+      podium: 100,
+      duration: 0.8,
+      delay: 0.8,
+      onUpdate: () => {
+        if (podiumRef.current) {
+          podiumRef.current.style.setProperty('transform', `translateY(${retourValue.podium}%)`)
         }
       },
-      onComplete:()=>setIsAnimComplete(true)
+      onComplete: () => setIsAnimComplete(true)
     })
-    .play()
+      .play()
 
-  },[])
+  }, [])
 
   const onComplete = () => {
     setCurrentDescription(currentDesc)
@@ -72,7 +116,7 @@ const MobileIntro = () => {
       <div
         className='animationDiv'
         style={{
-          opacity:0
+          opacity: 0
         }}
         ref={opacDivRef}
       >
@@ -81,26 +125,28 @@ const MobileIntro = () => {
           placeholder='Mathilde'
           onChange={(e: string) => setCurrentTit(e)}
           maxLength={20}
+          val={currentTit}
         />
         <IntroInput
           label='Pour'
           placeholder="Être arrivée à l'heure"
           onChange={(e: string) => setCurrentDesc(e)}
           maxLength={200}
+          val={currentDesc}
         />
         <IntroButton
           label='Surprends-moi'
-          onClick={() => { }}
+          onClick={surpriseMe}
         />
         <IntroButton
           label='Suivant'
           onClick={onComplete}
         />
       </div>
-      <div 
+      <div
         className={`podium ${isDarkMode ? 'dark' : 'light'}`}
         style={{
-          transform:'translateY(100%)'
+          transform: 'translateY(100%)'
         }}
         ref={podiumRef}
       >
