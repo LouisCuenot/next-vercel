@@ -183,7 +183,7 @@ const GeneratedMedal = () => {
         
 
         return newMedalGeom;
-    }, [medal, contoursGeom, iconsGeom]);
+    }, [medal]);
 
     useEffect(()=>{
         if(!current3DFont || !medal?.content.title.length)return setTitleGeom(null)
