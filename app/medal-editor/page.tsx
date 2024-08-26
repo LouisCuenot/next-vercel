@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import Link from 'next/link';
 import React, { RefObject, useEffect, useState } from 'react'
 import './medal-editor.scss'
-import { MedalType } from '../types/Medal';
+import { CollierType, ContoursType, IconType, MedalType, MetalType } from '../types/Medal';
 import { ActiveParameterType, MedalEditorContext } from './context/MedalEditorContext';
 import { Group, Mesh } from 'three';
 import { Perf } from 'r3f-perf';
@@ -23,19 +23,24 @@ type FormValues = {
 
 const MedalEditor = () => {
 
+    const metalOptions:MetalType[] = ['gold','silver','bronce']
+    const contourOptions:ContoursType[] = ['stars','points','lauriers','tripleLines','verticalLines']
+    const collierOptions:CollierType[] = ['green','blue','pink','cyan','grey','red','yellow','purple','white','black']
+    const iconOptions:IconType[] = ['sport','trash','cuisine','menage','chrono','course','toilette']
+
 
 
     const [medalRef, setMedalRef] = useState<RefObject<Group> | null>(null)
     const [currentMedal, setCurrentMedal] = useState<MedalType | null>({
-        collier: 'blue',
+        collier: collierOptions[Math.floor(Math.random()*(collierOptions.length-0.001))],
         content: {
-            date: 'aaa',
-            mission: 'dv ',
-            title: 'xc'
+            date: '',
+            mission: '',
+            title: ''
         },
-        contours: 'lauriers',
-        icon: 'sport',
-        metal: 'gold'
+        contours: contourOptions[Math.floor(Math.random()*(contourOptions.length-0.001))],
+        icon: iconOptions[Math.floor(Math.random()*(iconOptions.length-0.001))],
+        metal: metalOptions[Math.floor(Math.random()*(metalOptions.length-0.001))]
     })
     const [currentDescription, setCurrentDescription] = useState('')
     const [currentTitle, setCurrentTitle] = useState('')

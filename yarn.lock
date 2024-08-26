@@ -100,6 +100,19 @@
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
+"@lottiefiles/dotlottie-react@^0.8.10":
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-react/-/dotlottie-react-0.8.10.tgz#202cca84ff56638d399bf1e6b2009fb7ed82676d"
+  integrity sha512-BLCsP16wHOFwgjPDM6gicskGsi/6G6gMeM3MvtLLTNyEx6OT8a7LET+P4l1nYYp2b0VYjf88bH2XNI9hha8bng==
+  dependencies:
+    "@lottiefiles/dotlottie-web" "0.31.1"
+    debounce "^2.0.0"
+
+"@lottiefiles/dotlottie-web@0.31.1":
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/dotlottie-web/-/dotlottie-web-0.31.1.tgz#e316ab84f355a444cbc69552e4b334f2f6e690f6"
+  integrity sha512-s2L3SQvmGq6ouxBlEHbNDulFZq87LJZizg5yzrUkZkmGXpjL7pDq6FNqPTxEKqXg6iu9snlXhPg+kqg5znz5Tw==
+
 "@mediapipe/tasks-vision@0.10.8":
   version "0.10.8"
   resolved "https://registry.yarnpkg.com/@mediapipe/tasks-vision/-/tasks-vision-0.10.8.tgz#a78e137018a19933b7a1d0e887d553d4ab833d10"
@@ -1121,6 +1134,11 @@ debounce@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
   integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
+
+debounce@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-2.1.0.tgz#eab25eaf254b848fcfccffbde75bdaa44842caa3"
+  integrity sha512-OkL3+0pPWCqoBc/nhO9u6TIQNTK44fnBnzuVtJAbp13Naxw9R6u21x+8tVTka87AhDZ3htqZ2pSSsZl9fqL2Wg==
 
 debug@4, debug@4.x, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4:
   version "4.3.6"

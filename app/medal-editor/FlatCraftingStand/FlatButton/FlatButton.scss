@@ -6,10 +6,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    font-weight: 400;
     font-size: 18px;
     user-select: none;
     cursor: pointer;
+    
 
     &.light {
         -webkit-box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;

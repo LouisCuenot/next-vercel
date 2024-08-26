@@ -9,7 +9,7 @@ const DesktopRandomButton = () => {
     const metalOptions:MetalType[] = ['gold','silver','bronce']
     const contourOptions:ContoursType[] = ['stars','points','lauriers','tripleLines','verticalLines']
     const collierOptions:CollierType[] = ['green','blue','pink','cyan','grey','red','yellow','purple','white','black']
-    const iconOptions:IconType[] = ['sport','trash','cuisine','menage']
+    const iconOptions:IconType[] = ['sport','trash','cuisine','menage','chrono','course','toilette']
   
     const randomize = () => {
       if(!currentMedal)return

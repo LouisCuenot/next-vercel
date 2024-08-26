@@ -4,32 +4,40 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 10;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: .2s ease;
+
 
     &.dark {
         background-color: rgba(39, 39, 39, 1);
-        ;
+        transition: .2s ease;
+
     }
 
     &.light {
         background-color: rgba(240, 240, 240, 1);
+        transition: .2s ease;
     }
 
-    h3{
+    h3 {
         font-size: 32px;
         text-align: center;
         margin-bottom: 48px;
-        &.light{
+        font-weight: 400;
+
+        &.light {
             color: #8C8C8C;
         }
-        &.dark{
+
+        &.dark {
             color: #FFFFFF;
         }
     }
+
 
     .finishButtonsContainer {
         width: fit-content;
@@ -38,6 +46,7 @@
         justify-content: center;
         align-items: center;
         overflow: visible;
+
         .finishButton {
             width: 150px;
             height: 44px;
@@ -49,9 +58,11 @@
             overflow: visible;
             font-size: 12px;
             user-select: none;
-            &:first-of-type{
+
+            &:first-of-type {
                 margin-right: 36px;
             }
+
             cursor: pointer;
 
             &.light {
@@ -65,6 +76,169 @@
                 box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
                 color: #FFFFFF;
             }
+        }
+    }
+
+    .submitting{
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 32px;
+        .loading{
+            height: 10px;
+            width: 30px;
+            overflow: visible;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        span{
+            margin-right: 12px;
+            &.light {
+                color: #8C8C8C;
+            }
+
+            &.dark {
+                color: #FFFFFF;
+            }
+        }
+    }
+
+    .medalLink {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: .2s ease;
+        &.dark {
+            background-color: rgba(39, 39, 39, 1);
+
+        }
+
+        &.light {
+            background-color: rgba(240, 240, 240, 1);
+        }
+
+        h3 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 48px;
+            font-weight: 400;
+            width: 80%;
+
+            &.light {
+                color: #8C8C8C;
+            }
+
+            &.dark {
+                color: #FFFFFF;
+            }
+        }
+
+        .linkContainer {
+            width: 80%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: visible;
+
+            .link {
+                overflow: visible;
+                width: fit-content;
+                height: 52px;
+                border-radius: 26px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 48px;
+
+                &.light {
+                    -webkit-box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+                    box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+                }
+
+                &.dark {
+                    -webkit-box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+                    box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+                }
+
+                a {
+                    width: fit-content;
+                    margin: 0 32px;
+
+                    &.light {
+                        color: #8C8C8C;
+                    }
+
+                    &.dark {
+                        color: #FFFFFF;
+                    }
+                }
+            }
+
+            .copyButton {
+                width: 150px;
+                height: 52px;
+                border-radius: 26px;
+                margin: 0 6px;
+                display: flex;
+                justify-content: center;
+                align-items:center;
+                
+                user-select: none;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+
+                &.light {
+                    -webkit-box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+                    box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
+                    color: #8C8C8C;
+
+                    &.digged {
+                        -webkit-box-shadow: inset 2px -2px 2px 0px #FFFFFF, inset -2px 5px 7px 5px #AAAAAA;
+                        box-shadow: inset 2px -2px 2px 0px #FFFFFF, inset -2px 5px 7px 5px #AAAAAA;
+                    }
+                }
+
+                &.dark {
+                    -webkit-box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+                    box-shadow: 4px -4px 8px 0px rgba(255, 255, 255, 0.06), inset -4px 4px 4px 0px rgba(255, 255, 255, 0.06), inset 2px -2px 4px 0px #000000, -4px 4px 8px 0px #000000;
+                    color: #FFFFFF;
+
+                    &.digged {
+                        -webkit-box-shadow: inset -3px 5px 8px 5px #000000, inset 3px -3px 3px 0px rgba(255, 255, 255, 0.06);
+                        box-shadow: inset -3px 5px 8px 5px #000000, inset 3px -3px 3px 0px rgba(255, 255, 255, 0.06);
+                    }
+                }
+
+                span{
+                    transition: .2s ease;
+                    font-weight: 400;
+                    font-size: 18px;
+                }
+            
+                .check{
+                    margin-left: 10px;
+                    height: 10px;
+                    width: 14px;
+                    overflow: visible;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+            }
+
         }
     }
 }
