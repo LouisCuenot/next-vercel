@@ -71,7 +71,7 @@ const FinishUI = () => {
                 className={`finishButton ${isDarkMode ? 'dark' : 'light'}`}
                 onClick={handleSubmit}
             >
-                <span>Oui, j'envoie</span>
+                <span>Oui, j envoie</span>
             </div>
         </div>
         {
