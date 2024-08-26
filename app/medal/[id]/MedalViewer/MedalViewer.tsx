@@ -20,7 +20,7 @@ const MedalViewer = () => {
 
   return (
     <Canvas>
-       
+        <GeneratedMedal/>
         <Lights/>
         <Camera/>
         <OrbitControls/>
