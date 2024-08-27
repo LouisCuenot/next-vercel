@@ -153,12 +153,14 @@
             .link {
                 overflow: visible;
                 width: fit-content;
+                max-width: calc(100% - 152px);
                 height: 52px;
                 border-radius: 26px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-right: 48px;
+                margin-right: 32px;
+                padding: 0 16px;
 
                 &.light {
                     -webkit-box-shadow: 2px -2px 5px 0px #FFFFFF, inset -2px 2px 2px 0px #FFFFFF, inset 1px -1px 2px 0px #AAAAAA, -2px 2px 2px 0px #AAAAAA;
@@ -172,8 +174,10 @@
 
                 a {
                     width: fit-content;
-                    margin: 0 32px;
-
+                    white-space: nowrap;
+                    width: 100%;
+                    text-overflow: ellipsis;
+                    text-align: center;
                     &.light {
                         color: #8C8C8C;
                     }
@@ -185,10 +189,10 @@
             }
 
             .copyButton {
-                width: 150px;
+                width: 120px;
                 height: 52px;
                 border-radius: 26px;
-                margin: 0 6px;
+                padding: 0 6px;
                 display: flex;
                 justify-content: center;
                 align-items:center;
@@ -225,7 +229,7 @@
                 span{
                     transition: .2s ease;
                     font-weight: 400;
-                    font-size: 18px;
+                    font-size: 16px;
                 }
             
                 .check{

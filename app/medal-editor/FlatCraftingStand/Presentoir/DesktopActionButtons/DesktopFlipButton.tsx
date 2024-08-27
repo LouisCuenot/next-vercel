@@ -15,8 +15,8 @@ const DesktopFlipButton = () => {
     if(!medalRef.current)return
     if(isAnimating) return
     let rotationTarget = 0
-    if(medalRef.current.rotation.z%(Math.PI*2)<1.6){
-      rotationTarget = Math.PI
+    if(medalRef.current.rotation.z%(Math.PI*2)>-1.6){
+      rotationTarget = -Math.PI
     }
     setIsAnimating(true)
     const tweenRot = gsap.to(medalRef.current.rotation, {

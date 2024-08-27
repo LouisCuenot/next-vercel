@@ -38,7 +38,7 @@ const Presentoir = () => {
     <div
         className='presentoirContainer'
         style={{
-          margin:`${!isMobile ? '22px' : '0px'}`
+          marginBottom:!isMobile ? `${window.innerHeight * 0.25 - 140}px` : `${Math.max(window.innerHeight * 0.25 - 206,22)}px`
         }}
     >
       {

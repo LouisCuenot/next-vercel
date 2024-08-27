@@ -23,7 +23,7 @@ const MedalViewer = () => {
         <GeneratedMedal/>
         <Lights/>
         <Camera/>
-        <OrbitControls/>
+        <OrbitControls enablePan={false}/>
     </Canvas>
   )
 }

@@ -19,7 +19,7 @@ const Camera = () => {
 
 
   return (
-    <PerspectiveCamera makeDefault position={[0,0,20]} args={[10, width/height,0.01,1000]}/>
+    <PerspectiveCamera makeDefault position={[0,0,15]} args={[10, width/height,0.01,1000]}/>
   )
 }
 
