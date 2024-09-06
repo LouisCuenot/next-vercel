@@ -1,5 +1,5 @@
 import { useMedal } from '@/app/create-medal/context/CreateMedalContext'
-import { InnerlinesModel, LaurierModel, StarsModel, TripleLinesModel } from '@/app/types/GLBTypes'
+import { ClouModel, InnerlinesModel, LaurierModel, StarsModel, TripleLinesModel } from '@/app/types/GLBTypes'
 import { useGLTF } from '@react-three/drei'
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 import BorderMaterial from '../BorderMaterial/BorderMaterial'
@@ -16,35 +16,46 @@ const Contours = () => {
   const starsRef = useRef<Mesh>(null!)
   const innerLinesRef = useRef<Mesh>(null!)
   const tripleLinesRef = useRef<Mesh>(null!)
+  const clousRef = useRef<Mesh>(null!)
 
 
   const [
     lauriers,
     stars,
     innerLines,
-    tripleLines
+    tripleLines,
+    clous
   ] = useGLTF([
     '/glb/contours/couronneLauriers.glb',
     '/glb/contours/stars.glb',
     '/glb/contours/innerLines.glb',
-    '/glb/contours/tripleCircle.glb'
+    '/glb/contours/tripleCircle.glb',
+    '/glb/contours/clou.glb'
   ]) as unknown as [
       LaurierModel,
       StarsModel,
       InnerlinesModel,
-      TripleLinesModel
+      TripleLinesModel,
+      ClouModel
     ]
 
   const geometries = {
     lauriers: lauriers.nodes.Curve.geometry,
     stars: stars.nodes.Curve011.geometry,
     innerLines:innerLines.nodes.Circle.geometry,
-    tripleLines:tripleLines.nodes.Circle001.geometry
+    tripleLines:tripleLines.nodes.Circle001.geometry,
+    clous:clous.nodes.Sphere.geometry
   }
 
 
   useEffect(() => {
-    const refs:MutableRefObject<Mesh>[] = [lauriersRef,starsRef, innerLinesRef, tripleLinesRef]
+    const refs:MutableRefObject<Mesh>[] = [
+      lauriersRef,
+      starsRef, 
+      innerLinesRef, 
+      tripleLinesRef,
+      clousRef
+    ]
     let activeID = 0
     if(currentContours === "lauriers"){
       activeID = 0
@@ -54,6 +65,8 @@ const Contours = () => {
       activeID = 2
     }else if(currentContours === 'tripleLines'){
       activeID = 3
+    }else if(currentContours === 'points'){
+      activeID = 4
     }
 
     refs.forEach((ref, index)=>{
@@ -67,8 +80,8 @@ const Contours = () => {
       }else{
         gsap.to(ref.current.position,{
           z:0,
-          duration:0.1,
-          ease:'power1.in'
+          duration:0.5,
+          ease:'power2.in'
         })
       }
     })
@@ -118,6 +131,16 @@ const Contours = () => {
       >
         <meshMatcapMaterial matcap={textures.gold}/>
         <BorderMaterial scale={1} geometry={geometries.tripleLines}/>
+      </mesh>
+      <mesh
+        ref={clousRef}
+        position-z={0.075}
+        rotation-x={Math.PI*0.5}
+        geometry={geometries.clous}
+        scale={[1.7,1.7,1.7]}
+      >
+        <meshMatcapMaterial matcap={textures.gold}/>
+        <BorderMaterial scale={1} geometry={geometries.clous}/>
       </mesh>
 
     </>

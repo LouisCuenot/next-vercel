@@ -24,7 +24,7 @@ const BorderMaterial = (props:{
                     shader.vertexShader =
                 /*glsl*/`
                     void main(){
-                        vec3 newPosition = position + normal * 0.0005;
+                        vec3 newPosition = position + normal * 0.001;
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition,1.0);
                     }
                 `

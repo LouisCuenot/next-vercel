@@ -23,5 +23,10 @@ export type TripleLinesModel = GLTF & {
     nodes: {
         Circle001: THREE.Mesh
     }
-    materials: {}
 }
+
+export type ClouModel = GLTF & {
+    nodes: {
+      Sphere: THREE.Mesh
+    }
+  }
