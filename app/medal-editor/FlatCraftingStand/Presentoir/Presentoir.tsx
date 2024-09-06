@@ -1,14 +1,42 @@
 import React, { useEffect, useRef } from 'react'
 import './Presentoir.scss'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, extend, useThree } from '@react-three/fiber'
 import Scene from './Scene/Scene'
 import { Perf } from 'r3f-perf'
 import { useMedalContext } from '../../context/MedalEditorContext'
 import DesktopActionButton from './DesktopActionButtons/DesktopFlipButton'
 import DesktopRandomButton from './DesktopActionButtons/DesktopRandomButton'
 import DesktopFlipButton from './DesktopActionButtons/DesktopFlipButton'
+import gradientVert from './Scene/GradientShader/gradient.vert'
+import gradientFrag from './Scene/GradientShader/gradient.frag'
+import { shaderMaterial } from '@react-three/drei'
+import { Side } from 'three'
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      gradientMaterial: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { 
+        attach?: string;
+        args?: any;
+        side:Side
+      };
+    }
+  }
+}
+
+const GradientMaterial = shaderMaterial(
+  {
+
+  },
+  gradientVert,
+  gradientFrag
+)
+
+extend({GradientMaterial})
 
 const Presentoir = () => {
+
+
 
   const {isDarkMode, isMobile} = useMedalContext()
 
@@ -55,11 +83,12 @@ const Presentoir = () => {
       }
       <div className="canvasContainer">
       <Canvas
-        style={{pointerEvents:'none'}}
+        //style={{pointerEvents:'none'}}
       >
         {
-          //<Perf position='top-left'  />
+          <Perf position='top-left'  />
         }
+        
         
         <Scene/>
       </Canvas>

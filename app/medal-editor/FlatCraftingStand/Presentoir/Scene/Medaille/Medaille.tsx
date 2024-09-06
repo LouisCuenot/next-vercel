@@ -1,8 +1,8 @@
 
 import { Text, useGLTF, useTexture } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { BufferGeometry, Group, Mesh, NearestFilter } from 'three'
+import { BackSide, BufferGeometry, Group, Mesh, NearestFilter, Vector2 } from 'three'
 
 import { useMedalContext } from '@/app/medal-editor/context/MedalEditorContext'
 import { generateMedal } from './generateMedal'
@@ -87,6 +87,27 @@ type CourseResult = GLTF & {
 
 const Medaille = () => {
 
+    const createGradientTexture = (width:number, height:number) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+      
+        // Create a linear gradient
+        const gradient = ctx!.createLinearGradient(0, 0, width, 0);
+        gradient.addColorStop(0, '#ff0000'); // Red
+        gradient.addColorStop(1, '#0000ff'); // Blue
+      
+        // Fill the canvas with the gradient
+        ctx!.fillStyle = gradient;
+        ctx!.fillRect(0, 0, width, height);
+      
+        return canvas.toDataURL();
+      };
+
+      const gradientTextureURL = createGradientTexture(512, 512);
+    const [gradientTexture] = useTexture([gradientTextureURL]);
+
     let { setMedalRef, currentMedal, currentDescription, currentTitle } = useMedalContext()
 
 
@@ -153,6 +174,7 @@ const Medaille = () => {
     }
 
     const bumpMap = useTexture('/bump.jpg')
+    const matCamp = useTexture('/tests/matcap.jpg')
 
     const mRef = useRef<Group>(null)
 
@@ -166,6 +188,13 @@ const Medaille = () => {
 
 
     const [titleGeom, setTitleGeom] = useState<null| BufferGeometry>(null)
+
+    useFrame(()=>{
+        if(mRef.current){
+            //mRef.current.rotation.x +=0.005
+            //mRef.current.rotation.z +=0.01
+        }
+    })
 
 
 
@@ -212,7 +241,7 @@ const Medaille = () => {
             if(letter === ' '){
                 presSpacePosition = index
             }
-            if(index - presSpacePosition === 16){
+            if(index - presSpacePosition === 20){
                 placeToInsertSpace.push(index)
                 presSpacePosition = index
             }
@@ -239,7 +268,8 @@ const Medaille = () => {
                 >
                     <Base>
                         <cylinderGeometry args={[1, 1, 0.2, 64, 8]} />
-                        <meshPhysicalMaterial
+                        
+                            <meshPhysicalMaterial
                             color={
                                 currentMedal.metal === 'gold'
                                     ?
@@ -257,6 +287,9 @@ const Medaille = () => {
                             roughness={0.2}
                             reflectivity={1}
                         />
+                            
+                       
+                        
                     </Base>
                     {
                         titleGeom &&
@@ -269,7 +302,7 @@ const Medaille = () => {
                             color={
                                 currentMedal.metal === 'gold'
                                     ?
-                                    0x493306
+                                    0xC0C0C0
                                     :
                                     currentMedal.metal === 'silver'
                                         ?
@@ -285,8 +318,11 @@ const Medaille = () => {
                     }
 
                 </Geometry>
+                
             </mesh>
-            <mesh
+            
+            
+                <mesh
                 position-y={-0.105}
             >
                 <cylinderGeometry args={[1, 1, 0.01, 64, 8]} />
@@ -332,15 +368,18 @@ const Medaille = () => {
             <Text
                 fontSize={0.1}
                 font='/fonts/Manrope.ttf'
-                position-y={-0.12}
+                position-y={0.12}
                 color={0x000000}
-                rotation={[-Math.PI * 0.5, Math.PI, 0]}
+                rotation={[-Math.PI * 0.5,0, 0]}
                 maxWidth={1.6}
                 textAlign='center'
                 whiteSpace='normal'
             >
                 {modifiedDescription}
             </Text>
+        
+            
+            
         </group>
     )
 }

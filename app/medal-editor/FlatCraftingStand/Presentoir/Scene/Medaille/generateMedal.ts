@@ -76,35 +76,35 @@ const createIcon = (type:IconType,models:GeomIconsType) => {
     switch(type){
         case 'sport':
             icon = models.sport.clone()
-            icon.scale(5,5,5)
+            icon.scale(1.4,1.4,1.4)
             break
         case 'trash':
             icon = models.trash.clone()
-            icon.scale(4,4,4)
+            icon.scale(1.4,1.4,1.4)
             break
         case 'cuisine':
             icon = models.cuisine.clone()
-            icon.scale(4,4,4)
+            icon.scale(1.4,1.4,1.4)
             break
         case 'menage':
             icon = models.menage.clone()
-            icon.scale(6,6,6)
+            icon.scale(1.7,1.7,1.7)
             break
         case 'chrono':
             icon = models.chrono.clone()
-            icon.scale(5,5,5)
+            icon.scale(1.4,1.4,1.4)
             break
         case 'toilette':
             icon = models.toilette.clone()
-            icon.scale(5,5,5)
+            icon.scale(1.4,1.4,1.4)
             break
         case 'course':
             icon = models.course.clone()
-            icon.scale(5,5,5)
+            icon.scale(1.6,1.6,1.6)
     }
 
     
-    icon.translate(0,medalThickness*0.5 + 0.01,0)
+    icon.translate(0,medalThickness*0.5 + 0.01,radius * 0.6)
 
     return icon
 }

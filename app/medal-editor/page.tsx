@@ -205,8 +205,8 @@ const MedalEditor = () => {
                         }}
                     >
                         {
-                            !isIntroCompleted &&
-                            <Intro />
+                            //!isIntroCompleted &&
+                            //<Intro />
                         }
                         {
                             !isMobile &&
@@ -221,7 +221,7 @@ const MedalEditor = () => {
                             className='medalEditor'
                         >
                             {
-                                isAnimComplete &&
+                                !isAnimComplete &&
                                 <FlatCraftingStand />
                             }
                         </div>

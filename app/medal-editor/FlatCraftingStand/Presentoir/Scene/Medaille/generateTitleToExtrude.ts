@@ -32,7 +32,6 @@ export const generateTitleToExtrude = (font: Font, text: string,radius:number) =
         geomArray.push(letterGeom)
     })
 
-
     return mergeGeometries(geomArray,false)
 
 
