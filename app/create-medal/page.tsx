@@ -11,7 +11,7 @@ const CreateMedal = () => {
   return (
     <CreateMedalContext>
         <AssetsContext>
-            <Scene/>
+          <Scene/>
             <UI/>
         </AssetsContext>
     </CreateMedalContext>

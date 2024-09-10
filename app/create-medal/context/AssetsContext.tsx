@@ -11,17 +11,9 @@ import { GLTFLoader } from 'three/examples/jsm/Addons.js'
 const aContext = createContext<{
     textures:{ 
         [key: string]:Texture 
-    },
-    models:{
-        [key:string]:BufferGeometry
-    },
-    setModels:(m:{
-        [key:string]:BufferGeometry
-    })=>void
+    }
 }>({
     textures:{},
-    models:{},
-    setModels:()=>{}
 })
 
 const AssetsContext = (props:{
@@ -33,8 +25,6 @@ const AssetsContext = (props:{
     const [textures, setTextures] = useState<{ 
         [key: string]:Texture 
     }>({})
-
-    const [models, setModels] = useState<{[key:string]:BufferGeometry}>({})
     
 
     useEffect(()=>{
@@ -60,9 +50,7 @@ const AssetsContext = (props:{
   return (
     <aContext.Provider
         value={{
-            textures,
-            models,
-            setModels
+            textures
         }}
     >
         {children}

@@ -1,0 +1,29 @@
+.mainCategorieButton{
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    cursor: pointer;
+    span{
+        font-size: 16px;
+        color: #2F2D2B;
+    }
+    .point{
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        margin-top: 3px;
+        transform: translateY(20px);
+        transition: .2s ease;
+        &.active{
+            transform: translateY(0);
+        }
+        &.tr{
+            opacity: 0.5;
+            transform: translateY(3px);
+        }
+    }
+}

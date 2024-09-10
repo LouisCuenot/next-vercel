@@ -1,18 +1,28 @@
 import { Canvas } from '@react-three/fiber'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Background from './Background/Background'
 import Controls from './Controls/Controls'
 import Medal from './Medal/Medal'
 import { Perf } from 'r3f-perf'
+import { useMedal } from '../context/CreateMedalContext'
 
 
 const Scene = () => {
+
+  const {currentPage} = useMedal()
+
   return (
-    <Canvas>
+    <Canvas gl={{antialias:true}}>
         <Background/>
         <Controls/>
-        <Medal/>
-        <Perf/>
+        {
+          //currentPage === 'configurator' &&
+          <Medal/>
+        }
+        {
+          //  <Perf/>
+        }
+       
     </Canvas>
   )
 }

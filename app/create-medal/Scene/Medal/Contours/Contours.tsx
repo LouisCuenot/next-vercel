@@ -6,6 +6,7 @@ import BorderMaterial from '../BorderMaterial/BorderMaterial'
 import { useAssets } from '@/app/create-medal/context/AssetsContext'
 import { Mesh } from 'three'
 import gsap from 'gsap'
+import ModifiedMatcapMaterial from '../ModifiedMatcapMaterial/ModifiedMatcapMaterial'
 
 const Contours = () => {
 
@@ -99,7 +100,7 @@ const Contours = () => {
         geometry={geometries.lauriers}
         scale={[1.4,1,1.4]}
       >
-        <meshMatcapMaterial matcap={textures.gold}/>
+        <ModifiedMatcapMaterial/>
         <BorderMaterial scale={1} geometry={geometries.lauriers}/>
       </mesh>
       <mesh
@@ -109,7 +110,7 @@ const Contours = () => {
         geometry={geometries.stars}
         scale={[1.75,1,1.75]}
       >
-        <meshMatcapMaterial matcap={textures.gold}/>
+        <ModifiedMatcapMaterial/>
         <BorderMaterial scale={1} geometry={geometries.stars}/>
       </mesh>
       <mesh
@@ -119,7 +120,7 @@ const Contours = () => {
         geometry={geometries.innerLines}
         scale={[1.998,1,1.998]}
       >
-        <meshMatcapMaterial matcap={textures.gold}/>
+        <ModifiedMatcapMaterial/>
         <BorderMaterial scale={1} geometry={geometries.innerLines}/>
       </mesh>
       <mesh
@@ -129,7 +130,7 @@ const Contours = () => {
         geometry={geometries.tripleLines}
         scale={[2.3,1,2.3]}
       >
-        <meshMatcapMaterial matcap={textures.gold}/>
+        <ModifiedMatcapMaterial/>
         <BorderMaterial scale={1} geometry={geometries.tripleLines}/>
       </mesh>
       <mesh
@@ -139,7 +140,7 @@ const Contours = () => {
         geometry={geometries.clous}
         scale={[1.7,1.7,1.7]}
       >
-        <meshMatcapMaterial matcap={textures.gold}/>
+        <ModifiedMatcapMaterial/>
         <BorderMaterial scale={1} geometry={geometries.clous}/>
       </mesh>
 

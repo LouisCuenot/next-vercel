@@ -11,7 +11,9 @@ export type CreateMedalContextType = {
     currentName:string,
     setCurrentName:(n:string)=>void,
     currentDescription:string,
-    setCurrentDescription:(d:string)=>void
+    setCurrentDescription:(d:string)=>void,
+    currentPage:string,
+    setCurrentPage:(p:string)=>void
 }
 
 const cmContext = createContext<CreateMedalContextType>({
@@ -22,7 +24,9 @@ const cmContext = createContext<CreateMedalContextType>({
     currentName:'',
     setCurrentName:()=>{},
     currentDescription:'',
-    setCurrentDescription:()=>{}
+    setCurrentDescription:()=>{},
+    currentPage:'intro',
+    setCurrentPage:()=>{}
 })
 
 const CreateMedalContext = (props:{
@@ -35,6 +39,7 @@ const CreateMedalContext = (props:{
     const [currentContours, setCurrentContours] = useState<ContoursType>('lauriers')
     const [currentName, setCurrentName] = useState<string>('')
     const [currentDescription,setCurrentDescription] = useState<string>('')
+    const [currentPage, setCurrentPage] = useState<string>('intro')
 
 
     return(
@@ -47,7 +52,9 @@ const CreateMedalContext = (props:{
                 currentName,
                 setCurrentName,
                 currentDescription,
-                setCurrentDescription
+                setCurrentDescription,
+                currentPage,
+                setCurrentPage
             }}
         >
             {children}

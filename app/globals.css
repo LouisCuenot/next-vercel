@@ -14,3 +14,8 @@ html,body,#root{
   font-family: "PassionOne";
   src: local("PassionOne-Bold"), url("./fonts/PassionOne/PassionOne-Bold.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Degular";
+  src: local("DegularSemiBold"), url("./fonts/Degular/DegularSemiBold.otf") format("truetype");
+}
