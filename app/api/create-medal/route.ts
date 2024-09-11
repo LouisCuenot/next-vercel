@@ -1,6 +1,6 @@
 import dbConnect from "@/app/lib/dbConnect";
 import Medal from "@/app/models/Medal";
-import { MedalType } from "@/app/types/Medal";
+import { MedalType } from "@/app/types/MedalTypes";
 import { NextRequest, NextResponse } from "next/server";
 import {v4 as uuidV4} from 'uuid'
 

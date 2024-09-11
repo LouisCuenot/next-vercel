@@ -16,8 +16,8 @@ const MetalParameter = (props:{
     <div
         className={`
             metalParameter
-            ${hoveredCategorie === 'metal' ? 'isCurrentParam' : ''}
-            ${currentCategorie === 'metal' && (!hoveredCategorie || hoveredCategorie === 'metal')  ? 'isCurrentParam' :  ''}
+            
+            ${currentCategorie === 'metal' ? 'isCurrentParam' :  ''}
         `}
     >
         <span

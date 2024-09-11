@@ -118,7 +118,7 @@ const Contours = () => {
         position-z={0.075}
         rotation-x={Math.PI*0.5}
         geometry={geometries.innerLines}
-        scale={[1.998,1,1.998]}
+        scale={[1.9,1,1.9]}
       >
         <ModifiedMatcapMaterial/>
         <BorderMaterial scale={1} geometry={geometries.innerLines}/>

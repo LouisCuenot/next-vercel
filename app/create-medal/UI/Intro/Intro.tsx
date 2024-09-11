@@ -65,7 +65,7 @@ const Intro = () => {
                     <div className="borderBar" />
                     <input
                         type="text"
-                        placeholder='Mathilde'
+                        placeholder='Julie'
                         id='nameInput'
                         maxLength={20}
                         onChange={(e)=>setCurrentName(e.target.value)}
@@ -81,7 +81,7 @@ const Intro = () => {
                         type="text"
                         placeholder="Être arrivée à l'heure"
                         id='descriptionInput'
-                        maxLength={200}
+                        maxLength={130}
                         value={currentDescription}
                         onChange={(e)=>setCurrentDescription(e.target.value)}
                     />

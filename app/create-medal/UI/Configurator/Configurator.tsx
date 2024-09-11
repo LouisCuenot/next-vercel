@@ -3,10 +3,11 @@ import './Configurator.scss'
 import gsap from 'gsap'
 import { useMedal } from '../../context/CreateMedalContext'
 import ParametersSection from './ParametersSection/ParametersSection'
+import { MedalType } from '@/app/types/MedalTypes'
 
 const Configurator = () => {
 
-  const { currentPage, setCurrentPage } = useMedal()
+  const { currentPage, setCurrentPage, currentContours, currentDescription, currentMetal, currentName } = useMedal()
 
   const backToIntro = () => {
     gsap.to('.toAnimate', {
@@ -32,6 +33,36 @@ const Configurator = () => {
         })
     }
 },[currentPage])
+
+const handleSubmit = async () => { 
+  const data:{
+    medal:MedalType
+  } = {
+    medal:{
+      metal:currentMetal,
+      contours:currentContours,
+      name:currentName,
+      description:currentDescription
+    }
+  }
+
+  try {
+    const response = await fetch('/api/create-medal',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(data)
+    })
+    if (!response.ok) {
+      throw new Error('Failed to submit form')
+    }
+    const result = await response.json()
+    console.log(result)
+  }catch(error){
+    console.error(error)
+  }
+}
 
   return (
     <div
@@ -65,7 +96,7 @@ const Configurator = () => {
           <span>Terminer</span>
         </div>
         <ParametersSection/>
-        <div className="finishButton">
+        <div className="finishButton" onClick={handleSubmit}>
           <span>Terminer</span>
         </div>
       </div>

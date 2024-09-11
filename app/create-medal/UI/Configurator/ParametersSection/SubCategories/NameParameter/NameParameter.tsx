@@ -16,15 +16,15 @@ const NameParameter = (props: {
         <div
             className={`
                 nameParameter
-                ${hoveredCategorie === 'name' ? 'isCurrentParam' : ''}
-                ${currentCategorie === 'name' && (!hoveredCategorie || hoveredCategorie === 'name')  ? 'isCurrentParam' :  ''}
+                
+                ${currentCategorie === 'name' ? 'isCurrentParam' :  ''}
             `}
         >
             <input
         type='text'
         onChange={(e)=>setCurrentName(e.target.value)}
         value={currentName}
-        placeholder='Raison'
+        placeholder='Destinataire'
         maxLength={20}
       />
         </div>

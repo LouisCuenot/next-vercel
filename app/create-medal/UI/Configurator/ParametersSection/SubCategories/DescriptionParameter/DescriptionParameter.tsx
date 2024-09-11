@@ -17,8 +17,8 @@ const DescriptionParameter = (props:{
     <div
         className={`
             descriptionParameter
-            ${hoveredCategorie === 'description' ? 'isCurrentParam' : ''}
-            ${currentCategorie === 'description' && (!hoveredCategorie || hoveredCategorie === 'description')  ? 'isCurrentParam' :  ''}
+            
+            ${currentCategorie === 'description' ? 'isCurrentParam' :  ''}
         `}
     >
       <input
@@ -26,7 +26,7 @@ const DescriptionParameter = (props:{
         onChange={(e)=>setCurrentDescription(e.target.value)}
         value={currentDescription}
         placeholder='Raison'
-        maxLength={200}
+        maxLength={130}
       />
     </div>
   )

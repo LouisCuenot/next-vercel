@@ -16,8 +16,8 @@ const ContoursParameter = (props: {
         <div
             className={`
                 contoursParameter
-                ${hoveredCategorie === 'decoration' ? 'isCurrentParam' : ''}
-                ${currentCategorie === 'decoration' && (!hoveredCategorie || hoveredCategorie === 'decoration')  ? 'isCurrentParam' :  ''}
+                
+                ${currentCategorie === 'decoration' ? 'isCurrentParam' :  ''}
             `}
         >
             <span style={{textDecoration:currentContours === 'stars' ? 'underline' : 'none'}} onClick={()=>setCurrentContours('stars')}>Etoiles</span>

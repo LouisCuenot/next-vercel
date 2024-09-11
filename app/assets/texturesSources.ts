@@ -6,7 +6,7 @@ type TextureSourceType = {
 export const texturesSources:TextureSourceType[] = [
     {
         name:'gold',
-        src:'/textures/matcaps/gold.png'
+        src:'/textures/matcaps/gold5.png'
     },
     {
         name:'goldText',
@@ -14,10 +14,10 @@ export const texturesSources:TextureSourceType[] = [
     },
     {
         name:'silver',
-        src:'/textures/matcaps/silver.png'
+        src:'/textures/matcaps/silver8.png'
     },{
         name:'bronce',
-        src:'/textures/matcaps/bronce.png'
+        src:'/textures/matcaps/bronce2.png'
     },
     {
         name:'medalBump',
